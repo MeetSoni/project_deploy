@@ -53,7 +53,7 @@ app.set('view engine', 'hbs'); //  Set 'hbs' as the view engine for rendering te
 
 
 const mongoDBConnectionString=mongoose.connect(database.url, { useNewUrlParser: true, useUnifiedTopology: true, autoIndex: false });
-const url="mongodb+srv://meetsoni784:admin@cluster0.lrkxg.mongodb.net/sample_mflix"
+
 // var Movies = require('./models/');
 
 const data = {
