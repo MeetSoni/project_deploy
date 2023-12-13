@@ -1,0 +1,54 @@
+{{> header}}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Year Search</title>
+  <style>
+    body {
+      padding: 0px; /* Adding padding to the entire body */
+      font-family: Arial, sans-serif; /* Adding a default font family */
+    }
+    
+    h1 {
+      padding-bottom: 50px; /* Adding padding below the h1 heading */
+    }
+    
+    form {
+      padding: 15px; /* Adding padding around the form */
+      border: 1px solid #ccc; /* Adding a border for better visibility */
+      border-radius: 5px; /* Adding border radius for a rounded look */
+      margin-bottom: 20px; /* Adding margin at the bottom of the form */
+    }
+    
+    label, input, button {
+      margin-bottom: 10px; /* Adding space between form elements */
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Movies by Year</h1>
+  <form id="yearForm">
+    <label for="yearInput">Enter Year:</label>
+    <input type="number" id="yearInput" name="year" required min="1900" max="2100">
+    <button type="submit">Search</button>
+  </form>
+
+  <script>
+    const yearForm = document.getElementById('yearForm');
+
+    yearForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const year = document.getElementById('yearInput').value;
+
+      // Construct the URL with the entered year as a query parameter
+      const url = `/api/newfeature?year=${year}`;
+
+      // Redirect to the constructed URL
+      window.location.href = url;
+    });
+  </script>
+</body>
+</html>
+
+{{> footer}}

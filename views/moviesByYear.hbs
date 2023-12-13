@@ -1,0 +1,76 @@
+{{> header}}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movies Released in {{ year }}</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Fixed card dimensions */
+    .card {
+      width: 200px;
+      height: 300px;
+      background-color: #fff;
+      border-radius: 8px;
+      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px; /* Adjust the height of the image */
+      object-fit: cover;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .card-body {
+      padding: 15px;
+      height: 200px; /* Adjust the height of the body */
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .card-text {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Movies Released in {{ year }}</h1>
+  {{#if movies.length}}
+    <div class="container">
+      <div class="row">
+        {{#each movies}}
+          <div class="col-md-3">
+            <div class="card">
+              <img src="{{ this.poster }}" class="card-img-top" alt="{{ this.title }} Poster">
+              <div class="card-body">
+                <h5 class="card-title">{{ this.title }} ({{ this.year }})</h5>
+                <!-- Add other movie details here if needed -->
+                <!-- <p class="card-text">Director: {{ this.directors }}</p> -->
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  {{else}}
+    <p>No movies found for the year {{ year }}</p>
+  {{/if}}
+</body>
+</html>
+
+{{> footer}}

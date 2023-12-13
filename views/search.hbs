@@ -1,0 +1,43 @@
+{{> header}}
+<form id="loginForm" action="/">
+
+  <h1>Search for movie data</h1>
+  
+  <label for="title">Title</label>
+  <input type="text" id="titleInput" name="title" />
+  <div class="title error"></div>
+  
+  <label for="page">Page</label>
+  <input type="text" id="pageInput" name="page" />
+  <div class="page error"></div>
+  
+  <label for="perpage">Per Page</label>
+  <input type="text" id="perpageInput" name="perpage" />
+  <div class="perpage error"></div>
+  
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+    
+    var titleValue = document.getElementById('titleInput').value;
+    var pageValue = document.getElementById('pageInput').value;
+    var perpageValue = document.getElementById('perpageInput').value;
+
+    var apiUrl = '/api/step3/';
+
+    // Add title to the API URL if the title field is not empty
+    if (titleValue.trim() !== '') {
+      apiUrl += encodeURIComponent(titleValue) + '/';
+    } else {
+      apiUrl += '';
+    }
+
+    apiUrl += pageValue + '/' + perpageValue;
+
+    window.location.href = apiUrl; 
+  });
+</script>
+{{> footer}}
